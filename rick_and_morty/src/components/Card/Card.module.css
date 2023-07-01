@@ -1,0 +1,83 @@
+.nombre{
+    color: rgb(188, 62, 219);
+    font-size: 30px;
+    text-align: center;
+    margin-top: -140px;
+}
+
+.nombre:hover{
+    color: rgb(255, 255, 255);
+    font-size: 30px;
+    text-align: center;
+    margin-top: -140px;
+}
+
+.container{
+    background-color: rgba(99, 26, 196, 0.7);
+    border-radius: 10px;
+    display: inline-block;
+    width: 300px;
+    height: 470px;
+    margin: 15px;
+    overflow: hidden;
+}
+
+.lodemas{
+    display: left;
+    color: aliceblue;
+    font-size: 20px;
+    align-content: space-between;
+    margin: 0px 10px 0px 10px;
+    overflow:hidden;
+}
+
+.boton{
+    display: flex;
+    color: rgb(61, 11, 94);
+    border: transparent;
+    font-size: 35px;
+    border-top-right-radius: 10px; 
+    width: 45px;
+    background-color: transparent;
+    font-weight: bold;
+    position: relative;
+    left: 205px;
+    bottom: 354px;
+    text-align: center;
+    cursor: pointer;
+    justify-content: space-around;
+}
+
+.boton:hover{
+    display: flex;
+    color: rgb(255, 255, 255);
+    border: transparent;
+    font-size: 35px;
+    border-top-right-radius: 10px; 
+    width: 45px;
+    background-color: transparent;
+    font-weight: bold;
+    position: relative;
+    left: 205px;
+    bottom: 354px;
+    text-align: center;
+    cursor: pointer;
+    justify-content: space-around;
+}
+
+
+.imagen{
+    padding: -40;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+favor{
+    bottom: 0px;
+    cursor: pointer;
+    left: 260px;
+    position: relative;
+    text-align: center;
+    cursor: pointer;
+    justify-content: space-around;
+}

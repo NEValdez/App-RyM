@@ -1,0 +1,11 @@
+.titulo{
+    font-size: large;
+}
+
+.container{
+    align-content: space-around;
+    display:flex;
+    margin: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
