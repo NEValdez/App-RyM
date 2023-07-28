@@ -43,15 +43,17 @@ useEffect(() => {
          window.alert("Ese personaje ya está en la lista");
          return;
       }
-      axios(`https://rickandmortyapi.com/api/character/${id}`).then(({ data }) => {
-      if (data.name) {
-         setCharacters([data, ...characters]);
-       } else {
-          window.alert('¡No hay personajes con este ID!');
+      axios("http://localhost:3001/rickandmorty/character/${id}")
+      .then(({ data }) => {
+         if (data.name) {
+            setCharacters([data, ...characters]);
+         }
+       })
+       .catch(err => alert(err.response.data.error)); 
       }
-   })
-
    }
+
+
 
    function onClose(id){
       setCharacters(characters.filter((character)=> character.id !== id));
@@ -72,6 +74,6 @@ useEffect(() => {
          </Routes>
       </div>
    );
-}
+
 
 export default App;
