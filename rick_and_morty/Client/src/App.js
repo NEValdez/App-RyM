@@ -15,21 +15,27 @@ function App() {
 
    const navigate = useNavigate();
    
-   const EMAIL = 'ejemplo@gmail.com';
-   const PASSWORD = 'Nico123';
+   const URL = 'http://localhost:3001/rickandmorty/'
 
-function login(userData) {
-   if (userData.password === PASSWORD && userData.email === EMAIL) {
-      setAccess(true);
-      navigate('/home');
-   }
+async function login({ email, password }) {
+  try {
+   const { data } = await axios(`${URL}login?email=${email}&password=${password}`)
+   const { access } = data
+
+   setAccess(access)
+   access && navigate('/home')
+   
+  } catch ({ response }) {
+      const { data } = response
+      alert(data.message)
+  }
 }
 
 useEffect(() => {
    !access && navigate('/');
 }, [access]);
 
-   function onSearch(id){
+   const onSearch = async (id) => {
       if (id > 826) {
          window.alert("No hay tantos personajes!");
          return;
@@ -43,13 +49,14 @@ useEffect(() => {
          window.alert("Ese personaje ya está en la lista");
          return;
       }
-      axios("http://localhost:3001/rickandmorty/character/${id}")
-      .then(({ data }) => {
-         if (data.name) {
-            setCharacters([data, ...characters]);
-         }
-       })
-       .catch(err => alert(err.response.data.error)); 
+      try {
+         const { data } = await axios(`${URL}/character/${id}`)
+
+         setCharacters(oldChars => [...oldChars, data])
+
+      } catch(error) {
+         alert(error.response.data)
+      }
       }
    }
 

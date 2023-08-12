@@ -1,18 +1,22 @@
 const axios = require('axios')
+const errorHandler = require('../utils/errors')
 
-const URL_BASE = 'https://rickandmortyapi.com/api/character'
+const URL_BASE = 'https://rickandmortyapi.com/api/character/'
 
-const getCharById = (res, id) => {
-    axios(`${URL_BASE}/${id}`)
-    .then((data)=>{
-         const { name, gender, species, origin, image, status } = data
-         res.writeHead(200, {"Content-Type":"application/json"})
-         res.end(JSON.stringify({id, name, gender, species, origin, image, status}))
-    })
-    .catch((error)=>{
-        res.writeHead(404, {"Content-Type":"text/plain"})
-        res.end(error.message)
-    })
+const getCharById = async (req, res) => {
+    const id = parseInt(req.params.id)
+
+    try {
+        const respuesta = await axios(`${URL_BASE}${id}`)
+        const { name, species, status, origin, image, gender} = respuesta.data
+        const personaje = {id, name, species, status, origin, image, gender}
+
+        res.status(200).json(personaje)
+
+    } catch (error){
+        errorHandler(res, error)
+    }
+    
 }
 
 module.exports = getCharById
